@@ -1,0 +1,27 @@
+{
+  "name": "blog-astro-techlog",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && pagefind --site dist",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/markdown-satteri": "^0.4.1",
+    "@astrojs/mdx": "^8.0.1",
+    "@astrojs/sitemap": "^3.7.4",
+    "@lism-css/icons": "*",
+    "@lism-css/plugin": "^0.5.1",
+    "@lism-css/ui": "^0.40.1",
+    "@pagefind/default-ui": "^1.5.2",
+    "astro": "^7.3.2",
+    "astro-expressive-code": "^0.44.2",
+    "github-slugger": "^2.0.0",
+    "lism-css": "^1.0.1",
+    "pagefind": "^1.5.2",
+    "satteri": "^0.10.5"
+  }
+}

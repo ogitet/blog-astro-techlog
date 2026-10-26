@@ -1,0 +1,112 @@
+/**
+ * サイト全体で使用する共通設定。
+ * タイトル・キャッチコピー・ページネーション等、表示に関わる値はここで管理する。
+ *
+ * 画面に出る文言（aria-label・404・検索・目次・アーカイブ説明等）は `uiText` に集約している。
+ * 言語別テンプレート（`lism-cli create --lang en`）はこのファイルごと差し替えるため、
+ * 各コンポーネント／ページは文言をハードコードせず `siteConfig.uiText.*` を参照する。
+ */
+export const siteConfig = {
+  // サイト名
+  name: 'lism.blog',
+
+  // キャッチコピー
+  tagline: 'Web開発の学びと記録',
+
+  // サイトのデフォルト説明文
+  description: 'ブログの説明文をここに入力してください。meta description に使われます。',
+
+  // <html lang="..."> に使う値
+  lang: 'ja',
+
+  // カラーテーマのデフォルト（'system' / 'light' / 'dark'）
+  theme: { default: 'light' as 'system' | 'light' | 'dark' },
+
+  // ページネーション設定
+  pagination: {
+    // 1ページあたりの記事数
+    postsPerPage: 6,
+  },
+
+  // ヘッダー
+  header: {
+    // メニュー（モーダル）用ナビ
+    nav: [
+      { label: 'Home', href: '/' },
+      { label: 'About', href: '/about/' },
+      { label: 'Archive', href: '/archive/' },
+    ],
+  },
+
+  // OG 画像のデフォルト設定（loos.tools/ogimg-maker の API パラメータ）
+  // @see https://loos.tools/ogimg-maker/guide/
+  ogImage: {
+    type: '3-4',
+    h: 238,
+    c: 6,
+    l: 84,
+    // bg: 'fill',
+  },
+
+  // SNS リンク
+  sns: [
+    {
+      label: 'GitHub',
+      icon: {
+        viewBox: '0 0 32 32',
+        path: 'M15.73,2.32C7.93,2.32,2,8.25,2,16.05c0,6.17,3.93,11.55,9.49,13.43c0.67,0.12,0.97-0.3,0.97-0.67s0-2.3,0-3.39c0,0-3.93,0.85-4.72-1.63c0,0-0.6-1.63-1.57-2c0,0-1.27-0.91,0.06-0.91c0,0,1.39,0.12,2.18,1.45c1.21,2.18,3.27,1.51,4.11,1.21c0.12-0.91,0.48-1.51,0.91-1.87c-3.14-0.3-6.35-0.85-6.35-6.17c0-1.51,0.42-2.36,1.33-3.27c-0.12-0.36-0.6-1.87,0.12-3.81c1.21-0.36,3.87,1.51,3.87,1.51c1.15-0.3,2.36-0.48,3.57-0.48s2.42,0.18,3.57,0.48c0,0,2.72-1.87,3.87-1.51c0.79,1.94,0.3,3.39,0.12,3.81c0.91,1.03,1.45,1.75,1.45,3.27c0,5.44-3.27,5.81-6.47,6.17c0.48,0.42,0.97,1.27,0.97,2.6c0,1.87,0,4.23,0,4.66c0,0.36,0.24,0.85,0.97,0.73C26.19,27.78,30,22.4,30,16.17C29.82,8.25,23.47,2.32,15.73,2.32z',
+      },
+      href: 'https://github.com/lism-css/core',
+    },
+    {
+      label: 'X',
+      icon: {
+        viewBox: '0 0 32 32',
+        path: 'M18.42,13.99L27.88,3h-2.25l-8.21,9.57L10.86,3H3.3l9.93,14.48L3.3,29h2.25l8.69-10.1L21.14,29h7.56 L18.42,13.99L18.42,13.99z M15.35,17.6l-1-1.42L6.31,4.71h3.43l6.44,9.22l1,1.42l8.39,12h-3.43L15.35,17.6L15.35,17.6z',
+      },
+      href: 'https://x.com/lismcss',
+    },
+  ],
+
+  // フッター
+  footer: {
+    copyright: '© 2026 Lism CSS',
+    nav: [
+      { label: 'About', href: '/about/' },
+      { label: 'Archive', href: '/archive/' },
+      { label: 'Privacy Policy', href: '/privacy/' },
+      { label: 'Contact', href: '#' },
+    ],
+  },
+
+  // 画面に出る固定文言（aria-label・404・検索・目次・アーカイブ説明等）。言語別差し替えの起点。
+  uiText: {
+    nav: { aria: 'メインナビゲーション', openMenu: 'メニューを開く', closeMenu: 'メニューを閉じる' },
+    footer: { aria: 'サイト情報' },
+    pager: { aria: 'ページネーション', prev: '前のページ', next: '次のページ' },
+    articleNav: { aria: '記事ナビゲーション' },
+    tagCloud: { aria: 'タグ一覧' },
+    sns: { aria: 'SNSリンク' },
+    share: { x: 'X でシェア', copy: 'リンクをコピー', copyPrompt: 'この URL をコピーしてください' },
+    search: { aria: '記事を検索', title: '検索', devUnavailable: '開発環境では検索機能を利用できません' },
+    toc: { label: '目次', open: '目次を開く' },
+    themeSwitch: { aria: 'カラーテーマを切り替える' },
+    breadcrumb: { aria: 'パンくず' },
+    categoryTabs: { aria: 'カテゴリー' },
+    notFound: {
+      metaDescription: 'お探しのページは見つかりませんでした。',
+      title: 'ページが見つかりません',
+      description: 'お探しのページは削除されたか、URL が変更された可能性があります。',
+    },
+    // タグ一覧 / 年月アーカイブの meta description・見出し直下テキスト（{tag} / {year}{month} を埋め込む）
+    tagsIndexDescription: 'タグ別の記事一覧',
+    archiveIndexDescription: '年月別の記事一覧',
+    tagArchiveDescription: (tag: string) => `タグ「${tag}」の記事一覧`,
+    monthArchiveDescription: (year: string, month: string) => `${year}年${month}月の記事一覧`,
+    // 記事件数の表示
+    postCount: (count: number) => `${count} 件の記事`,
+    archiveTotalCount: (count: number) => `全 ${count} 件`,
+  },
+} as const;
+
+export type SiteConfig = typeof siteConfig;

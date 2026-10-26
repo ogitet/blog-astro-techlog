@@ -1,0 +1,121 @@
+---
+import { Lism, Center, Cluster } from 'lism-css/astro';
+import { siteConfig } from '@/config/site';
+
+interface Props {
+  currentPage: number;
+  lastPage: number;
+  getPageHref?: (n: number) => string;
+}
+
+const { currentPage, lastPage, getPageHref = (n: number) => (n === 1 ? '/' : `/${n}/`) } = Astro.props;
+
+function buildPages(current: number, last: number): (number | 'gap')[] {
+  if (last <= 7) return Array.from({ length: last }, (_, i) => i + 1);
+  const result: (number | 'gap')[] = [1];
+  if (current > 3) result.push('gap');
+  for (let i = Math.max(2, current - 1); i <= Math.min(last - 1, current + 1); i++) {
+    result.push(i);
+  }
+  if (current < last - 2) result.push('gap');
+  result.push(last);
+  return result;
+}
+
+const pages = buildPages(currentPage, lastPage);
+const prevHref = currentPage > 1 ? getPageHref(currentPage - 1) : null;
+const nextHref = currentPage < lastPage ? getPageHref(currentPage + 1) : null;
+---
+
+<Lism as="nav" class="c--pager" ff="accent" fz="xs" mbs="20" aria-label={siteConfig.uiText.pager.aria}>
+  <Cluster g="5" jc="center">
+    {
+      prevHref ? (
+        <Center
+          as="a"
+          href={prevHref}
+          class="c--pager_nav"
+          c="text"
+          td="none"
+          hasTransition
+          hov={{ c: 'brand', bgc: 'base-2' }}
+          rel="prev"
+          aria-label={siteConfig.uiText.pager.prev}
+        >
+          <span aria-hidden="true">←</span>
+        </Center>
+      ) : (
+        <Center as="span" class="c--pager_nav" o="pp" aria-label={siteConfig.uiText.pager.prev} aria-disabled="true">
+          <span aria-hidden="true">←</span>
+        </Center>
+      )
+    }
+
+    <Cluster g="5">
+      {
+        pages.map((page) =>
+          page === 'gap' ? (
+            <Center as="span" class="c--pager_num" c="text-2" px="5" aria-hidden="true">
+              …
+            </Center>
+          ) : page === currentPage ? (
+            <Center as="span" class="c--pager_num" px="5" c="text" hasTransition aria-current="page">
+              {page}
+            </Center>
+          ) : (
+            <Center
+              as="a"
+              href={getPageHref(page)}
+              class="c--pager_num"
+              px="5"
+              c="text-2"
+              td="none"
+              hasTransition
+              hov={{ c: 'brand', bgc: 'base-2' }}
+            >
+              {page}
+            </Center>
+          )
+        )
+      }
+    </Cluster>
+
+    {
+      nextHref ? (
+        <Center
+          as="a"
+          href={nextHref}
+          class="c--pager_nav"
+          c="text"
+          td="none"
+          hasTransition
+          hov={{ c: 'brand', bgc: 'base-2' }}
+          rel="next"
+          aria-label={siteConfig.uiText.pager.next}
+        >
+          <span aria-hidden="true">→</span>
+        </Center>
+      ) : (
+        <Center as="span" class="c--pager_nav" o="pp" aria-label={siteConfig.uiText.pager.next} aria-disabled="true">
+          <span aria-hidden="true">→</span>
+        </Center>
+      )
+    }
+  </Cluster>
+</Lism>
+<style>
+  @layer lism-custom {
+    .c--pager_nav,
+    .c--pager_num {
+      min-inline-size: var(--s35);
+      block-size: var(--s35);
+    }
+    .c--pager_num {
+      border-block-end: 1px solid transparent;
+      margin-block-end: -1px;
+    }
+    .c--pager_num[aria-current] {
+      border-block-end-color: var(--brand);
+    }
+  }
+</style>
