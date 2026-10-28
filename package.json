@@ -7,7 +7,8 @@
     "dev": "astro dev",
     "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check:cspell": "cspell ."
   },
   "dependencies": {
     "@astrojs/markdown-satteri": "^0.4.1",
@@ -23,5 +24,8 @@
     "lism-css": "^1.0.1",
     "pagefind": "^1.5.2",
     "satteri": "^0.10.5"
+  },
+  "devDependencies": {
+    "cspell": "^9.8.0"
   }
 }

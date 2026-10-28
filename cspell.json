@@ -1,0 +1,28 @@
+{
+  "language": "en",
+  "allowCompoundWords": true,
+  "useGitignore": true,
+  "ignorePaths": ["**/.gitignore", "**/*.svg", "**/cspell.json", "**/package.json"],
+  "dictionaries": [
+    "css",
+    "filetypes",
+    "fonts",
+    "html",
+    "node",
+    "npm",
+    "softwareTerms",
+    "typescript"
+  ],
+  "words": [
+    "bdrs",
+    "bxsh",
+    "cbox",
+    "Elit",
+    "Foog",
+    "fxsh",
+    "lism",
+    "ogimg",
+    "oveflow",
+    "Sätteri"
+  ]
+}
