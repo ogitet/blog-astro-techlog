@@ -3,6 +3,7 @@ import Tag from './Tag.astro';
 export default {
   title: 'Components/Tag',
   component: Tag,
+  tags: ['autodocs'],
   argTypes: {
     href: { control: 'text' },
   },

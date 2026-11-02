@@ -5,7 +5,7 @@ const posts = [
   { id: 'tech/mdx-extensions', data: { title: 'MDX拡張の使い方', excerpt: 'MDXでコンテンツを拡張する方法を紹介します。', date: '2026-04-20', tags: ['MDX'] } },
 ];
 
-export default { title: 'Components/PostList', component: PostList };
+export default { title: 'Components/PostList', component: PostList, tags: ['autodocs'] };
 
 export const Default = { args: { posts } };
 export const WithoutCategory = { args: { posts, showCategory: false } };

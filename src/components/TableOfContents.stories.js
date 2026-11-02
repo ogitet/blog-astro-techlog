@@ -5,6 +5,6 @@ const toc = [
   { depth: 2, slug: 'setup', text: 'セットアップ', children: [] },
 ];
 
-export default { title: 'Components/TableOfContents', component: TableOfContents };
+export default { title: 'Components/TableOfContents', component: TableOfContents, tags: ['autodocs'] };
 
 export const Default = { args: { toc } };

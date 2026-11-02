@@ -29,8 +29,11 @@
   },
   "devDependencies": {
     "@storybook-astro/framework": "^1.14.0",
+    "@storybook/addon-a11y": "^10.6.5",
+    "@storybook/addon-docs": "^10.6.5",
     "@storybook/builder-vite": "^10.6.5",
     "cspell": "^9.8.0",
-    "storybook": "^10.6.5"
+    "storybook": "^10.6.5",
+    "typescript": "^6.0.3"
   }
 }

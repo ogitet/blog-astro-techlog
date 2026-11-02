@@ -1,6 +1,6 @@
 import LinkCard from './LinkCard.astro';
 
-export default { title: 'Components/LinkCard', component: LinkCard };
+export default { title: 'Components/LinkCard', component: LinkCard, tags: ['autodocs'] };
 
 export const Internal = { args: { href: 'astro-blog-overview', type: 'internal' } };
 

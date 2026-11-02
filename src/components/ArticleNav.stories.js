@@ -1,6 +1,6 @@
 import ArticleNav from './ArticleNav.astro';
 
-export default { title: 'Components/ArticleNav', component: ArticleNav };
+export default { title: 'Components/ArticleNav', component: ArticleNav, tags: ['autodocs'] };
 
 export const BothDirections = {
   args: {
